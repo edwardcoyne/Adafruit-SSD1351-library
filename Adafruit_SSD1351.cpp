@@ -462,16 +462,16 @@ Adafruit_SSD1351::Adafruit_SSD1351(uint8_t cs, uint8_t rs, uint8_t sid, uint8_t 
     _sclk = sclk;
     _rst = rst;
     
-    csport      = portOutputRegister(digitalPinToPort(cs));
+    csport      = (volatile unsigned char*)portOutputRegister(digitalPinToPort(cs));
     cspinmask   = digitalPinToBitMask(cs);
 
-    rsport      = portOutputRegister(digitalPinToPort(rs));
+    rsport      = (volatile unsigned char*) portOutputRegister(digitalPinToPort(rs));
     rspinmask   = digitalPinToBitMask(rs);
 
-    sidport      = portOutputRegister(digitalPinToPort(sid));
+    sidport      = (volatile unsigned char*) portOutputRegister(digitalPinToPort(sid));
     sidpinmask   = digitalPinToBitMask(sid);
 
-    sclkport      = portOutputRegister(digitalPinToPort(sclk));
+    sclkport      = (volatile unsigned char*) portOutputRegister(digitalPinToPort(sclk));
     sclkpinmask   = digitalPinToBitMask(sclk);
 
 }
@@ -483,10 +483,10 @@ Adafruit_SSD1351::Adafruit_SSD1351(uint8_t cs, uint8_t rs,  uint8_t rst) : Adafr
     _sclk = 0;
     _rst = rst;
 
-    csport      = portOutputRegister(digitalPinToPort(cs));
+    csport      = (volatile unsigned char*) portOutputRegister(digitalPinToPort(cs));
     cspinmask   = digitalPinToBitMask(cs);
     
-    rsport      = portOutputRegister(digitalPinToPort(rs));
+    rsport      = (volatile unsigned char*) portOutputRegister(digitalPinToPort(rs));
     rspinmask   = digitalPinToBitMask(rs);
 
 }
